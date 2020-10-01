@@ -26,8 +26,8 @@ void selection_sort(int v[], int n){
 int main()
 {
 
-	int n = 10;
-	int vetor[10] = {13,7,5,1,9,4,7,6,3,10};
+	int n = 6;
+	int vetor[6] = {34, 1, 2, 32, 1000,1};
 	
     selection_sort(vetor, n);
 	
