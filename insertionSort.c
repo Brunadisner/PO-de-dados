@@ -1,28 +1,35 @@
 #include <stdio.h>
 
-void insertion_sort(int v[], int n){
+int insertionsort(int *v, int n) { 
+    int i, c, j, comparacoes = 0, trocas = 0; 
+    for (int i = 0; i < n; i++){
+        int c = v[i];
+        int j = i - 1;
 
-	for (int i = 1; i <=n-1; i++ ){
-		int pivo = v[i];
-        printf("Pivo eh %d\n",pivo);
-		int j = i-1;
-		while(j>=0 && v[j]>pivo){
-            
-			v[j+1] = v[j];
-			j--;
-		}
-		v[j+1] = pivo;
-	}
-
+        while(j >= 0 ){
+            comparacoes++;
+            if(v[j] > c){
+                v[j + 1] = v[j];
+                j--;
+                trocas++;
+            } else {
+                break;
+            }
+        }
+        v[j + 1] = c;
+    }
+    
+    printf("Comparacoes: %d\n", comparacoes);
+    printf("Trocas: %d\n", trocas);
 }
 
 
 int main()
 {
     int n = 6;
-	int vetor[6] = {34,54,1,2,99,-1};
+	int vetor[6] = {5,3,2,6,1,4};
 	
-    insertion_sort(vetor, n);
+    insertionsort(vetor, n);
 	
     for(int i = 0;i < n; i++){
 		printf("%d  ",vetor[i]);

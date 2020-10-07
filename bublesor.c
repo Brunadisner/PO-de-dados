@@ -4,21 +4,26 @@
 
 
 void bubble_sort(int v[], int n){
-	
+	int comp, trocas=0;
 	for(int i = n-1; i>=1; i--){
 		 int flag = 0;
 		
 		for(int j = 0; j<=i-1; j++){
 
 			if (v[j] > v[j+1]){
+				comp+=1;
 
 				int troca = v[j];
 				v[j] = v[j+1];
 				v[j+1] = troca;
+				trocas+=1;
+				
 				flag = 1;
+				
 
 
 			}
+			
 			
 
 		}
@@ -28,9 +33,10 @@ void bubble_sort(int v[], int n){
 			}
 			
 	}
+printf("Comparacoes: %d\n trocas: %d\n", comp,trocas);
 }
 
-void selection_sort(int v[], int n){
+/*void selection_sort(int v[], int n){
 
 	int menor;
 
@@ -65,23 +71,23 @@ void insertion_sort(int v[], int n){
 		v[j+1] = pivo;
 	}
 
-}
+}*/
 
 
 int main()
 {
 
-	int vetor[5] = {100,85,0,2,19};
+	int vetor[5] = {5,4,3,2,1};
 	int n = 5;
-	int vetor1[5] = {55,45,35,5,15};
-	int vetor2[5] = {55,45,35,5,15};
+	//int vetor1[5] = {55,45,35,5,15};
+	//int vetor2[5] = {55,45,35,5,15};
 
 	bubble_sort(vetor, n);
-	selection_sort(vetor1, n);
-	insertion_sort(vetor2,n);
+	//selection_sort(vetor1, n);
+	//insertion_sort(vetor2,n);
 
 	for(int i = 0;i < 5; i++){
-		printf("%d  ",vetor1[i]);
+		printf("%d  ",vetor[i]);
 	}
 	printf("\n");
 
