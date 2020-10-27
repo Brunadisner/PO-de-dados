@@ -8,8 +8,8 @@ void intercala (int *vet, int inicio, int meio, int fim);
 
 
 void main(){
-    int vet[5] = {3,27,6,4,5};
-    int n=5;
+    int vet[8] = {5,1,9,50,-6,100,7,50};
+    int n=8;
 
     printf("Valore desordenados ");
     for(int q=0;q<n;q++){
@@ -25,6 +25,7 @@ void main(){
         }
     printf("\n");
 }
+
 void mergesort (int *vet, int inicio, int fim) {
     if (inicio < fim) {
         int meio =floor(((inicio + fim)/2));
