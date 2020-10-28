@@ -8,7 +8,7 @@ void intercala (int *vet, int inicio, int meio, int fim);
 
 
 void main(){
-    int vet[8] = {-5,1,9,50,-6,100,150,50};
+    int vet[8] = {8,7,6,5,4,3,2,1};
     int n=8;
 
     printf("Valore desordenados ");
@@ -35,46 +35,41 @@ void mergesort (int *vet, int inicio, int fim) {
     }
 }
 void intercala (int *vet, int inicio, int meio, int fim) {
-    int tam = fim - inicio + 1;
+    int k = fim - inicio + 1;
     int i = inicio;
     int a,y;
     int j = meio + 1;
-    int p1 = 0, p2 = 0;
-    int *k;
-    k = (int *) malloc(tam*sizeof(int));
+    int *tam;
+    tam = (int *) malloc(k*sizeof(int));
+    k = 0;
 
-    if(k != NULL){  
-        for(int x = 0; x<tam; x++){
-            if (!p1 && !p2) {
-                if(vet[i] < vet[j]){
-                    k[x] = vet[i];
-                    i++;
-                }
-                
-                else{
-                    k[x] = vet[j];
-                    j++;
-                }
-                
-                if(i>meio) p1=1;
-                if(j>fim) p2=1;
-                
-            }
-            else{
-                if(!p1)
-                    k[x] = vet[i++];
-                else
-                    k[x] = vet[j++];
-                
-            }
-        
-    
+    while(i<=meio && j<=fim){  
+        if(vet[i] <= vet[j]){
+            tam[k] = vet[i];
+            i++;
         }
-
-    for (y = 0, a=inicio; y<tam;y++, a++) {
-        vet[a] = k[y];
-        //printf("vetor ordenado %d \n", vet[a]);
+        else{
+            tam[k] = vet[j];
+            j++;
+        }
+        k++;
     }
-    }   
-    free(k);
+    while(i<=meio){
+        tam[k] = vet[i];
+        k++;
+        i++;
+
+    }
+    while(j<=fim){
+        tam[k] = vet[j];
+        k++;
+        j++;
+
+    }
+       
+    for (y = 0, a=inicio; y<k;y++, a++) {
+        vet[a] = tam[y];
+        printf("vetor ordenado %d \n", vet[a]);
+    }  
+    free(tam);
 }
