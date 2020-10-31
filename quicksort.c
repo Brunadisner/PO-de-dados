@@ -2,35 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 
-void swap(int x, int y){ 
-   int temp;
-   temp = x;
-   x = y;
-   y = temp;
-}
+void quicksort (int *vet, int inicio, int fim);
+int particiona (int *vet, int inicio, int fim);
 
 int particiona (int *vet, int inicio, int fim) {
-    int pivo = fim;
-    int cont = inicio;
-    for (int i = inicio; i < fim; i++){
-        if(vet[i] <= vet[pivo]) {
-            cont++;
-            /*pivo = vet[i];
-            vet[i] = vet[inicio];
-            vet[inicio] = pivo;*/
-            swap(vet[cont], vet[i]);
+    int pivo = vet[inicio];
+    int aux, esq, dir;
+    esq = inicio;
+    dir = fim;
+    while(esq<dir){
+        while(vet[esq]<=pivo){
+            esq++;
         }
+        while (vet[dir] > pivo){
+            dir--;
+        }
+        if(esq < dir){
+            aux = vet[esq];
+            vet[esq] = vet[dir];
+            vet[dir] = aux;
+        }
+        
+        
     }
-
-    if (vet[cont] > vet[pivo]){
-        /*pivo = vet[inicio];
-        vet[inicio] = vet[cont];
-        vet[cont] = pivo;*/
-        cont++;
-        swap(vet[cont], vet[pivo]);
-    }
-    
-    return pivo;
+    vet[inicio] = vet[dir];
+    vet[dir] = pivo;
+    return dir;
 }
 
 void quicksort (int *vet, int inicio, int fim) {
@@ -44,8 +41,8 @@ void quicksort (int *vet, int inicio, int fim) {
 
 
 void main(){
-    int vet[5] = {3,27,6,4,5};
-    int n=5;
+    int vet[9] = {8,-7,15,10,15,-2,0,100,3};
+    int n=9;
 
     printf("Valore desordenados ");
     for(int q=0;q<n;q++){
